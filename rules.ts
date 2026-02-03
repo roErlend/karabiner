@@ -1,6 +1,6 @@
 import fs from "fs";
 import { KarabinerRules } from "./types";
-import { createHyperSubLayers, app, open, rectangle, shell } from "./utils";
+import { createHyperSubLayers, appToggle, open } from "./utils";
 
 const rules: KarabinerRules[] = [
   // Define the Hyper key itself
@@ -98,8 +98,8 @@ const rules: KarabinerRules[] = [
 
   ...createHyperSubLayers({
     a: {
-      c: app("Claude", true),
-      x: app("Codex", true),
+      c: appToggle("Claude"),
+      x: appToggle("Codex"),
       g: open("https://aistudio.google.com"),
     },
     // b = "B"rowse
@@ -108,13 +108,13 @@ const rules: KarabinerRules[] = [
     },
     // o = "Open" applications
     o: {
-      1: app("1Password"),
-      b: app("Firefox Developer Edition"),
-      v: app("Visual Studio Code", true),
-      s: app("Slack"),
-      n: app("Notion"),
-      t: app("WezTerm", true),
-      m: app("Messenger", true),
+      1: appToggle("1Password"),
+      b: appToggle("Firefox Developer Edition"),
+      v: appToggle("Visual Studio Code", "Code"),
+      s: appToggle("Slack"),
+      n: appToggle("Notion"),
+      t: appToggle("WezTerm"),
+      m: appToggle("Messenger"),
     },
 
     // TODO: This doesn't quite work yet.
@@ -269,7 +269,7 @@ const rules: KarabinerRules[] = [
       t: open(`raycast://extensions/raycast/system/toggle-system-appearance`),
       c: open("raycast://extensions/raycast/system/open-camera"),
       // 'v'oice
-      v: app("Azure VPN Client", true),
+      v: appToggle("Azure VPN Client"),
       r: open("raycast://extensions/thomas/color-picker/pick-color"),
     },
 

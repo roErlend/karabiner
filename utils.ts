@@ -223,12 +223,22 @@ export function app(name: string, local: boolean = false): LayerCommand {
 }
 
 /**
- * Open an app, or hide it if it's already focused
+ * Open an app, or hide it if it's already focused.
+ *
+ * Uses lsappinfo (fast) to check frontmost app, sends Cmd+H to hide.
+ * Note: displayName must match lsappinfo output (e.g., "Code" not "Visual Studio Code")
  */
-export function appToggle(name: string): LayerCommand {
-  const script = `osascript -e 'tell application "System Events" to set frontApp to name of first application process whose frontmost is true' -e 'if frontApp is "${name}" then tell application "System Events" to set visible of process "${name}" to false else do shell script "open -a \\"${name}\\""'`;
+// If displayName is not provided, appName is used for checking the frontmost app
+// To find the correct displayName for the focused app, run 
+// lsappinfo info -only name $(lsappinfo front)
+// in the terminal
+export function appToggle(appName: string, displayName?: string): LayerCommand {
+  const checkName = displayName ?? appName;
+  // lsappinfo is fast; Cmd+H hides any frontmost app
+  const script = `front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'"' -f4); if [ "$front" = "${checkName}" ]; then osascript -e 'tell app "System Events" to keystroke "h" using command down'; else open -a "${appName}"; fi`;
+
   return {
     to: [{ shell_command: script }],
-    description: `Toggle ${name}`,
+    description: `Toggle ${appName}`,
   };
 }

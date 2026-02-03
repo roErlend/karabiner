@@ -165,10 +165,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Claude.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"Claude\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"Claude\"; fi"
                   }
                 ],
-                "description": "Open locally -a 'Claude.app'",
+                "description": "Toggle Claude",
                 "type": "basic",
                 "from": {
                   "key_code": "c",
@@ -189,10 +189,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Codex.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"Codex\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"Codex\"; fi"
                   }
                 ],
-                "description": "Open locally -a 'Codex.app'",
+                "description": "Toggle Codex",
                 "type": "basic",
                 "from": {
                   "key_code": "x",
@@ -411,10 +411,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g -a '1Password.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"1Password\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"1Password\"; fi"
                   }
                 ],
-                "description": "Open -a '1Password.app'",
+                "description": "Toggle 1Password",
                 "type": "basic",
                 "from": {
                   "key_code": "1",
@@ -435,10 +435,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g -a 'Firefox Developer Edition.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"Firefox Developer Edition\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"Firefox Developer Edition\"; fi"
                   }
                 ],
-                "description": "Open -a 'Firefox Developer Edition.app'",
+                "description": "Toggle Firefox Developer Edition",
                 "type": "basic",
                 "from": {
                   "key_code": "b",
@@ -459,10 +459,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Visual Studio Code.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"Code\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"Visual Studio Code\"; fi"
                   }
                 ],
-                "description": "Open locally -a 'Visual Studio Code.app'",
+                "description": "Toggle Visual Studio Code",
                 "type": "basic",
                 "from": {
                   "key_code": "v",
@@ -483,10 +483,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g -a 'Slack.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"Slack\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"Slack\"; fi"
                   }
                 ],
-                "description": "Open -a 'Slack.app'",
+                "description": "Toggle Slack",
                 "type": "basic",
                 "from": {
                   "key_code": "s",
@@ -507,10 +507,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g -a 'Notion.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"Notion\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"Notion\"; fi"
                   }
                 ],
-                "description": "Open -a 'Notion.app'",
+                "description": "Toggle Notion",
                 "type": "basic",
                 "from": {
                   "key_code": "n",
@@ -531,10 +531,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'WezTerm.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"WezTerm\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"WezTerm\"; fi"
                   }
                 ],
-                "description": "Open locally -a 'WezTerm.app'",
+                "description": "Toggle WezTerm",
                 "type": "basic",
                 "from": {
                   "key_code": "t",
@@ -555,10 +555,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Messenger.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"Messenger\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"Messenger\"; fi"
                   }
                 ],
-                "description": "Open locally -a 'Messenger.app'",
+                "description": "Toggle Messenger",
                 "type": "basic",
                 "from": {
                   "key_code": "m",
@@ -1486,10 +1486,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -a 'Azure VPN Client.app'"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"Azure VPN Client\" ]; then osascript -e 'tell app \"System Events\" to keystroke \"h\" using command down'; else open -a \"Azure VPN Client\"; fi"
                   }
                 ],
-                "description": "Open locally -a 'Azure VPN Client.app'",
+                "description": "Toggle Azure VPN Client",
                 "type": "basic",
                 "from": {
                   "key_code": "v",
