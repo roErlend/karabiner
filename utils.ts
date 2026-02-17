@@ -232,10 +232,12 @@ export function app(name: string, local: boolean = false): LayerCommand {
 // To find the correct displayName for the focused app, run 
 // lsappinfo info -only name $(lsappinfo front)
 // in the terminal
-export function appToggle(appName: string, displayName?: string): LayerCommand {
+export function appToggle(appName: string, displayName?: string, { useProcessHide = false } = {}): LayerCommand {
   const checkName = displayName ?? appName;
-  // lsappinfo is fast; Cmd+H hides any frontmost app
-  const script = `front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'"' -f4); if [ "$front" = "${checkName}" ]; then osascript -e 'tell app "System Events" to keystroke "h" using command down'; else open -a "${appName}"; fi`;
+  const hideCmd = useProcessHide
+    ? `osascript -e 'tell application "System Events" to set visible of process "${checkName}" to false'`
+    : `osascript -e 'tell app "System Events" to keystroke "h" using command down'`;
+  const script = `front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'"' -f4); if [ "$front" = "${checkName}" ]; then ${hideCmd}; else open -a "${appName}"; fi`;
 
   return {
     to: [{ shell_command: script }],

@@ -1414,10 +1414,10 @@
               {
                 "to": [
                   {
-                    "shell_command": "open -g raycast://extensions/raycast/system/show-desktop"
+                    "shell_command": "front=$(lsappinfo info -only name $(lsappinfo front) | cut -d'\"' -f4); if [ \"$front\" = \"DevToys\" ]; then osascript -e 'tell application \"System Events\" to set visible of process \"DevToys\" to false'; else open -a \"DevToys\"; fi"
                   }
                 ],
-                "description": "Open raycast://extensions/raycast/system/show-desktop",
+                "description": "Toggle DevToys",
                 "type": "basic",
                 "from": {
                   "key_code": "d",

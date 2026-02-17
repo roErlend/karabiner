@@ -263,8 +263,7 @@ const rules: KarabinerRules[] = [
       e: open(
         `raycast://extensions/thomas/elgato-key-light/toggle?launchType=background`
       ),
-      // "D"o not disturb toggle
-      d: open(`raycast://extensions/raycast/system/show-desktop`),
+      d: appToggle(`DevToys`, undefined, { useProcessHide: true }),
       // "T"heme
       t: open(`raycast://extensions/raycast/system/toggle-system-appearance`),
       c: open("raycast://extensions/raycast/system/open-camera"),
